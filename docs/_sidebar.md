@@ -1,7 +1,6 @@
 <!-- docs/_sidebar.md -->
 
-- sidebar
+- Pure
 
   - [Home](/)
   - [Guide](guide.md)
-  - [test](/)
