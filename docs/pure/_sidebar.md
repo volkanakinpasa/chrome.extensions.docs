@@ -1,6 +1,10 @@
 <!-- docs/_sidebar.md -->
 
-- Pure
+- Quick Start
 
   - [Home](/)
-  - [Guide](guide.md)
+  - [Install Extension](/install.md)
+
+- Extension
+  - [Background Script](background.md)
+  - [Option Page](options.md)

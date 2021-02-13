@@ -1,3 +1,1 @@
-# Home
-
-> An awesome project.
+# Chrome Extensions Documents
