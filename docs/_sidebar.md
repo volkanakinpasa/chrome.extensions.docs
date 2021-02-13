@@ -4,3 +4,4 @@
 
   - [Home](/)
   - [Guide](guide.md)
+  - [test](/)
