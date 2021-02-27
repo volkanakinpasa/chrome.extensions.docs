@@ -1,10 +1,14 @@
 <!-- docs/_sidebar.md -->
 
+- Documentation
+
 - Quick Start
 
   - [Home](/)
-  - [Install Extension](/install.md)
+  - [Install](/install.md)
 
 - Extension
-  - [Background Script](background.md)
   - [Option Page](options.md)
+  - [Background Script](background.md)
+  - [Content Script](content.md)
+  - [Popup Page](popup.md)

@@ -1,6 +1,8 @@
-# Background
+# Background (background.js)
 
 ## How to listen if the extension is installed/updated
+
+User `chrome.runtime.onInstalled.addListener`
 
 ```javascript
 chrome.runtime.onInstalled.addListener(function (details) {
@@ -18,7 +20,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 });
 ```
 
-## Set uninstall url
+## How to open a url when the extension is uninstalled
 
 ```javascript
 chrome.runtime.setUninstallURL(`[URL]`);
@@ -32,9 +34,7 @@ chrome.tabs.create({
 });
 ```
 
-## How to open a url when the extension is uninstalled
-
-## How to set badge background color or text
+## How to set badge background color and text
 
 Don't forget to register Browser Action in manifest.json
 
@@ -60,7 +60,7 @@ chrome.browserAction.setBadgeBackgroundColor({color: '#f00'}, function(){...});
 
 ![Badge text & background color](assets/badge.png)
 
-## How to listen message
+## How to listen message in background.js
 
 ```javascript
 //background.js >> add listener
