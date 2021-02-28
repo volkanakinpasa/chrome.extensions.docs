@@ -2,7 +2,7 @@
 
 ## How to send a message object to the background script
 
-You can send a message from content script to background script
+Send a message from content script to background script
 
 ```javascript
 chrome.runtime.sendMessage({
@@ -31,3 +31,31 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 ```
 
 ## How to inject an html/css in DOM
+
+## How to send an XHR request to your API
+
+Let's say your extension needs to interact with your your API by sending GET, POST, PUT, DELETE requests.
+
+First of all, you must add your API domain in manifest.json file as <code>externally_connectable</code> (if you don't need api interaction, please remove this line in manifest.json and skip this part)
+
+```json
+ "externally_connectable": { "matches": ["*://*.your-api-domain.com/*"] }
+```
+
+then, in content.js
+
+```javascript
+const url =
+  'https://api.github.com/repos/volkanakinpasa/chrome.extensions.docs';
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function () {
+  if (this.readyState == 4 && this.status == 200) {
+    console.log(xhttp.responseText);
+  }
+};
+xhttp.open('GET', url, true);
+xhttp.send();
+```
+
+You must be aware of that your API might respond CORS origin within an error. In your API, You might need to give access to the domain where your content.js runs. For instance, if you want to call your API from youtube.com, you need to give access to youtube.com in your API.
