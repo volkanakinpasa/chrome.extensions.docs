@@ -1,8 +1,8 @@
 # Content Script
 
-## How to send a message object to the background script
+## How to send a message object to the Background Script
 
-Send a message from content script to background script
+Send a message from Content Script to Background Script
 
 ```javascript
 chrome.runtime.sendMessage({
@@ -11,11 +11,11 @@ chrome.runtime.sendMessage({
 });
 ```
 
-In order to listen this message in background script click here [How to listen message in background script](background?id=how-to-listen-message-in-background-script)
+In order to listen this message in Background Script click here [How to listen message in Background Script](background?id=how-to-listen-message-in-background-script)
 
-## How to listen message in content script
+## How to listen message in Content Script
 
-in this senario, once you send a message from background script, can listen it here
+in this senario, once you send a message from Background Script, can listen it here
 
 ```javascript
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {

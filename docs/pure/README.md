@@ -1,7 +1,7 @@
-# Chrome Extension Template
+# "Chrome Extension Template" Documentation
 
 ### Quick start
 
-Thank you for using Chrome Extension Template. Let's start with installing the extension. The extension package is ready to be installed under "extension" folder.
+Thank you for using Chrome Extension Template. Let's first start with installing the extension.
 
-### [Getting started](install.md)
+### [Install](install.md)

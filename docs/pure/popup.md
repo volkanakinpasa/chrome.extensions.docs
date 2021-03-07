@@ -1,6 +1,6 @@
 # Popup Page
 
-## How to read title of the current page
+## How to read the title of the current page
 
 in this senario, it reads the title of the current window and active tab. for instance, if you are browsing YouTube, the title of YouTube will be read.
 
@@ -17,9 +17,9 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 chrome.tabs.create({ url });
 ```
 
-## How to send a message object to the background script
+## How to send a message object to the Background Script
 
-Send a message from popup page to background script. Same approach as content script
+Send a message from popup page to Background Script. Same approach as Content Script
 
 ```javascript
 chrome.runtime.sendMessage({
@@ -28,11 +28,11 @@ chrome.runtime.sendMessage({
 });
 ```
 
-## How to send a message object to the content script and send an XHR request to your API
+## How to send a message object to the Content Script and send an XHR request to your API
 
-This approach here is slightly different than sending a message to background script. You first need to find which window and which tab you should send the message. <code>{ active: true, currentWindow: true }</code> and then send the message to the current tab <code>tabs[0].id</code>.
+This approach here is slightly different than sending a message to Background Script. You first need to find which window and which tab you should send the message by giving query <code>{ active: true, currentWindow: true }</code>.
 
-In this case it will first sends a message to content.js and then the content.js will send an XHR request to your api let's say api.github.com to fetch a repository. content.js will get the response from api and send it back to popup page. Right click on popup page > "inspect" to see the responded data in console. To see the XHR request, open Devtools > Network on the active tab.
+Example: Let's say you have two tabs open, one is YouTube and another one is Google and you are currently on the YouTube page. That means your active tab is YouTube. And you want to send a message from Popup Page to YouTube content page.
 
 ```javascript
 chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -46,6 +46,16 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 });
 ```
 
+If the active tab is Google, then you don't need to use <code> {active: true} </code>. instead you can use URL patterns. [More info in google developer page](https://developer.chrome.com/docs/extensions/reference/tabs/#method-query)
+
+In this case it will first sends a message to content.js and then content.js will send an XHR request to your API.
+
+Callback function: Once API responds, content.js pass the data back to Popup Page and you can catch it in this callback function.
+
+To debug the request on Popup Page, right click on popup page > "inspect" to see the responded data in console.
+
+To debug and see the XHR request in Conten Page, right click on Content Page(your active page which is YouTube) > "inspect" to see the responded data in console.
+
 Click
 [here](content?id=how-to-send-an-xhr-request-to-your-api)
-to see how the content script sends an XHR request to your API
+to see how the Content Script sends an XHR request to your API.

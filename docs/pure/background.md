@@ -1,4 +1,6 @@
-# Background (background.js)
+# Background Script
+
+### (background.js)
 
 ## How to listen if the extension is installed/updated
 
