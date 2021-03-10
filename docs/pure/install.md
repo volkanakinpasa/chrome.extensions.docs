@@ -20,6 +20,7 @@ or More Tools > Extensions
 
 Let's start reviewing the codes in the extension
 
+### [Manifest](manifest?id=manifest-manifestjson)
 ### [Option Page](options?id=options-page)
 
 ### [Background Script](background?id=background-script)
