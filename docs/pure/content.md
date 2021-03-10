@@ -11,6 +11,8 @@ chrome.runtime.sendMessage({
 });
 ```
 
+Note: The fields `type` and `data` are custom fields. You are free to add any field names instead.
+
 In order to listen this message in Background Script click here [How to listen message in Background Script](background?id=how-to-listen-message-in-background-script)
 
 ## How to listen message in Content Script
@@ -23,12 +25,15 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     ...
     case 'showAlertInContenScript':
       ...
-      alert('Messaeg is here');
+      alert('Message is here');
+      console.log('Message data:', message.data)
       break;
     ...
   }
 });
 ```
+
+Note: The fields `type` and `data` are custom fields. You are free to add any field names instead.
 
 ## How to inject an html/css in DOM
 

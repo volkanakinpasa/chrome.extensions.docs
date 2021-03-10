@@ -11,7 +11,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
 });
 ```
 
-## How to open a new tab in popup page
+## How to open a new tab from Popup Page
 
 ```javascript
 chrome.tabs.create({ url });
@@ -19,7 +19,7 @@ chrome.tabs.create({ url });
 
 ## How to send a message object to the Background Script
 
-Send a message from popup page to Background Script. Same approach as Content Script
+Send a message from Popup Page to Background Script. Same approach as Content Script
 
 ```javascript
 chrome.runtime.sendMessage({
@@ -27,6 +27,8 @@ chrome.runtime.sendMessage({
   data: 'Hi',
 });
 ```
+
+Note: The fields `type` and `data` are custom fields. You are free to add any field names instead.
 
 ## How to send a message object to the Content Script and send an XHR request to your API
 
@@ -52,7 +54,7 @@ In this case it will first sends a message to content.js and then content.js wil
 
 Callback function: Once API responds, content.js pass the data back to Popup Page and you can catch it in this callback function.
 
-To debug the request on Popup Page, right click on popup page > "inspect" to see the responded data in console.
+To debug the request on Popup Page, right click on Popup Page > "inspect" to see the responded data in console.
 
 To debug and see the XHR request in Conten Page, right click on Content Page(your active page which is YouTube) > "inspect" to see the responded data in console.
 

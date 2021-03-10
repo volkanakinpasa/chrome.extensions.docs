@@ -2,9 +2,11 @@
 
 ### (background.js)
 
-## How to listen if the extension is installed/updated
+## How to debug
 
-User `chrome.runtime.onInstalled.addListener`
+Debug: in order to debug the message in Background Script, right click on the extension > "Manage Extensions" > under "Inspect views" click on "background page".
+
+## How to listen if the extension is installed/updated
 
 ```javascript
 chrome.runtime.onInstalled.addListener(function (details) {
@@ -28,7 +30,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 chrome.runtime.setUninstallURL(`[URL]`);
 ```
 
-## How to open a new tab in background.js
+## How to open a new tab from Background Script
 
 ```javascript
 chrome.tabs.create({
@@ -38,13 +40,15 @@ chrome.tabs.create({
 
 ## How to set badge background color and text
 
-Don't forget to register Browser Action in manifest.json
+First of all you must register Browser Action in manifest.json
 
 ```json
 ...
 "browser_action": { "default_title": "Chrome Template" },
 ...
 ```
+
+Then, in Background Script
 
 ```javascript
 //set text
@@ -60,9 +64,11 @@ chrome.browserAction.setBadgeBackgroundColor(details: object, callback: function
 chrome.browserAction.setBadgeBackgroundColor({color: '#f00'}, function(){...});
 ```
 
+Then, you will see
+
 ![Badge text & background color](assets/badge.png)
 
-## How to listen message in background.js
+## How to listen message in Background Script
 
 ```javascript
 //background.js >> add listener
@@ -79,6 +85,8 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 });
 ```
 
+Note: The fields `type` and `data` are custom fields. You are free to add any field names instead.
+
 ## How to save an object into storage
 
 First of all you must add storage permission in manifest.json file
@@ -92,13 +100,25 @@ First of all you must add storage permission in manifest.json file
 }
 ```
 
-then, in javascript file
+Then, in javascript file
 
 ```javascript
+// 'key' can be string you wish. ie. 'install_date', 'modified_date', 'default_search_engine' etc.
 chrome.storage.sync.set({ key: value }, function () {
   console.log('Value is set to ' + value);
 });
 chrome.storage.sync.get(['key'], function (result) {
   console.log('Value currently is ' + result.key);
+});
+```
+
+## How to listen on storage change
+
+```javascript
+chrome.storage.onChanged.addListener(function (changes, namespace) {
+  for (const key in changes) {
+    const storageChange = changes[key];
+    console.log('storage has been updated', storageChange);
+  }
 });
 ```
